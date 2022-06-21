@@ -1,0 +1,28 @@
+From 1357fb5aa75cdfa66fb0b2862e00b99c2a9dd0f4 Mon Sep 17 00:00:00 2001
+From: Yann CARDAILLAC <yann.cardaillac@gmail.com>
+Date: Tue, 21 Jun 2022 17:51:48 +0200
+Subject: [PATCH] simplify makefile
+
+---
+ Makefile | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index a889229..55fecd6 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,9 +1,7 @@
+-CFLAGS = -g -O2 -Wall  $(shell libpng-config --cflags)
+-LDLIBS = $(shell libpng-config --ldflags)
+-
+ PROGRAMS = fb2png
+ 
+-all: $(PROGRAMS)
++all: fb2png.c
++	$(CC) -g -Wall $(CFLAGS) $(LDFLAGS) $< -lpng -o fb2png
+ 
+ clean:
+ 	rm -f $(PROGRAMS) *.o
+-- 
+2.25.1
+
